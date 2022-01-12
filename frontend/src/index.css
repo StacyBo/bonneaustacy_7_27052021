@@ -1,0 +1,33 @@
+main {
+    margin-top: 70px;
+}
+
+.fa-image{
+    font-size: 30px;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    color: #E97B86;
+}
+.fa-image:hover{
+    color: #c74c58;
+}
+
+.form-control {
+    background-color: #FFF4F4;
+    border-color: #E97B86;
+}
+
+.btn{
+    background-color: #E97B86;
+    color: white;
+}
+
+.btn:hover{
+    background-color: #c74c58;
+    color: white;
+}
+
+.text-card{
+    background-color: #FFF4F4;
+    border-radius: 5px;
+}
