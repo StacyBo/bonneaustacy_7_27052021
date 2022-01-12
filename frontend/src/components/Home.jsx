@@ -22,6 +22,7 @@ const Home = () => {
                         </div>
                         <div className="card-body text-card mx-3 my-1">
                             <p className="card-text"> Hello à tous !<br></br>Comment allez-vous aujourd'hui !?</p>
+                            <img src="..." class="img-fluid" alt="..."></img>
                         </div>
                         <div className="d-flex justify-content-end mt-2 mb-2">
                             <button type="button" className="btn btn-danger btn-sm">Commenter</button>
