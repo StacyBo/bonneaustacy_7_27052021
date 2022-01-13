@@ -1,7 +1,48 @@
-import { Link } from 'react-router-dom';
-import Navbar from './Navbar';
+import Navbar from "./Navbar";
+import {postUser} from "../utils/apiCalls";
+import {useState} from "react";
+import {useNavigate} from 'react-router-dom';
 
 const Signup = () => {
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [passwordRepeat, setPasswordRepeat] = useState("");
+    const navigate = useNavigate();
+    const validateForm = () => {
+        if (!lastName) {
+            alert('Nom invalide');
+            return false;
+        }
+        if (!firstName) {
+            alert('Prénom invalide');
+            return false;
+        }
+        if (!email) {
+            alert('Email invalide');
+            return false;
+        }
+        if (!password) {
+            alert('Mot de passe invalide');
+            return false;
+        }
+        if (password !== passwordRepeat) {
+            alert('Les mots de passe ne correspondent pas');
+            return false;
+        }
+        return true;
+    };
+
+    const onClickHandler = () => {
+        if (!validateForm()) {
+            return;
+        }
+
+        postUser({firstName, lastName, password, email}).then(function () {
+            navigate('/login');
+        })
+    };
     return (
         <>
             <Navbar />
@@ -16,7 +57,7 @@ const Signup = () => {
                                     <div className="form-outline flex-fill mb-0">
                                         <label className="form-label" htmlFor="lastname">Nom</label>
                                         <input type="text" id="lastname"
-                                            className="form-control" />
+                                               className="form-control" onChange={(e) => setLastName(e.target.value)} />
                                     </div>
                                 </div>
                                 <div className="d-flex flex-row align-items-center mb-4">
@@ -24,7 +65,7 @@ const Signup = () => {
                                     <div className="form-outline flex-fill mb-0">
                                         <label className="form-label" htmlFor="firstname">Prénom</label>
                                         <input type="text" id="firstname"
-                                            className="form-control" />
+                                               className="form-control" onChange={(e) => setFirstName(e.target.value)} />
                                     </div>
                                 </div>
 
@@ -32,8 +73,8 @@ const Signup = () => {
                                     <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                     <div className="form-outline flex-fill mb-0">
                                         <label className="form-label" htmlFor="email">Email</label>
-                                        <input type="email" id="email"
-                                            className="form-control" />
+                                        <input type="text" id="email"
+                                               className="form-control" onChange={(e) => setEmail(e.target.value)} />
                                     </div>
                                 </div>
 
@@ -41,26 +82,20 @@ const Signup = () => {
                                     <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
                                     <div className="form-outline flex-fill mb-0">
                                         <label className="form-label" htmlFor="password">Mot de passe</label>
-                                        <input type="password" id="password" className="form-control" />
-                                    </div>
+                                        <input type="password" id="password"
+                                               className="form-control" onChange={(e) => setPassword(e.target.value)} />                                    </div>
                                 </div>
 
                                 <div className="d-flex flex-row align-items-center mb-4">
                                     <i className="fas fa-key fa-lg me-3 fa-fw"></i>
                                     <div className="form-outline flex-fill mb-0">
                                         <label className="form-label" htmlFor="password-repeat">Répétez votre mot de passe</label>
-                                        <input type="password" id="password-repeat" className="form-control" />
-                                    </div>
+                                        <input type="password" id="password-repeat"
+                                               className="form-control" onChange={(e) => setPasswordRepeat(e.target.value)} />                                    </div>
                                 </div>
-                                <div className="d-flex flex-row align-items-center mb-4">
-                                    <div className="form-check">
-                                        <label className="form-check-label" htmlFor="is-admin">Modérateur
-                                            <input type="checkbox" className="form-check-input" id="is-admin" />
-                                        </label>
-                                    </div>
-                                </div>
+
                                 <div className="d-flex mx-4 mb-3 mb-lg-4">
-                                <Link to="/"><button type="button" className="btn btn-danger btn-lg">S'inscrire</button></Link>
+                                <button type="button" className="btn btn-danger btn-lg" onClick={onClickHandler}>S'inscrire</button>
                                 </div>
                             </form>
                         </div>

@@ -1,8 +1,45 @@
-import { Link } from 'react-router-dom';
-import Navbar from './Navbar';
-
+import Navbar from "./Navbar";
+import {postLogin} from "../utils/apiCalls";
+import {useContext, useState} from "react";
+import {useNavigate} from 'react-router-dom';
+import IsAuthenticatedContext from "../contexts/isAuthenticatedContext";
+import UserContext from "../contexts/userContext";
 
 const Login = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+    const [isAuthenticated, setIsAuthenticated] = useContext(IsAuthenticatedContext);
+    const [user, setUser] = useContext(UserContext);
+    const validateForm = () => {
+        if (!email) {
+            alert('Email invalide');
+            return false;
+        }
+        if (!password) {
+            alert('Mot de passe invalide');
+            return false;
+        }
+        return true;
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        if (!validateForm()) {
+            return;
+        }
+        postLogin({password, email}).then(function (response) {
+            if (response.user.id > 0 && response.token) {
+                localStorage.setItem("token", response.token);
+                setUser(response.user);
+                setIsAuthenticated(true);
+                navigate('/');
+            } else {
+                alert("Connexion impossible");
+            }
+        })
+    };
+
     return (
         <>
             < Navbar />
@@ -11,22 +48,25 @@ const Login = () => {
                 <section className="vh-100">
                     <div className="container h-100 w-50">
                         <div className="row d-flex justify-content-center h-100">
-                            <form className="mx-1 mx-md-4">
-                                <div class="mb-3 justify-content-center">
-                                    <label for="exampleInputEmail1" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                            <form onSubmit={handleSubmit}>
+                                <div className="mb-3">
+                                    <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
+                                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={(e) => setEmail(e.target.value)} />
                                 </div>
-                                <div class="mb-3 justify-content-center">
-                                    <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1" />
+                                <div className="mb-3">
+                                    <label htmlFor="exampleInputPassword1" className="form-label">Mot de passe</label>
+                                    <input type="password" className="form-control" id="exampleInputPassword1" onChange={(e) => setPassword(e.target.value)}/>
                                 </div>
-                                <Link to="/"><button type="submit" class="btn btn-danger">Se connecter</button></Link>
+                                <button type="submit" className="btn btn-primary">Se connecter</button>
                             </form>
                         </div>
                     </div>
                 </section>
+
             </main>
-        </>)
+
+        </>
+);
 }
 
 export default Login;

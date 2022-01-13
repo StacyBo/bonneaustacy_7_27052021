@@ -17,7 +17,7 @@
 2. `npx create-react-app .`
 3. `npm start`
 
-Optional :
+# Optional :
 - See the database : 
     - Connect to mysql : `mysql -u root -p`
     - Show the databases : `SHOW DATABASES;`

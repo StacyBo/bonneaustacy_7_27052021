@@ -1,9 +1,9 @@
-import NavbarCo from './NavbarCo';
+import Navbar from './Navbar';
 
 const Profile = () => {
     return (
         <>
-            < NavbarCo />
+            < Navbar />
             <main className="container">
                 <h2>Mon profil</h2>
                 <section className="vh-100">
