@@ -22,15 +22,15 @@ const Navbar = () => {
                     <div className="user-connected me-5">
                         {user.firstName} {user.lastName} est connecté
                     </div>
-                    <button className="btn btn-outline-success" type="submit" onClick={logout}>Se déconnecter</button>
+                    <button className="btn btn-outline-danger" type="submit" onClick={logout}>Se déconnecter</button>
                 </>
             );
         } else {
             return (
                 <>
 
-                    <Link to="/signup"><button className="btn btn-outline-success" type="submit">S'inscrire</button></Link>
-                    <Link to="/login"><button className="btn btn-outline-success" type="submit">Se connecter</button></Link>
+                    <Link to="/signup"><button className="btn btn-outline-danger" type="submit">S'inscrire</button></Link>
+                    <Link to="/login"><button className="btn btn-outline-danger mx-2" type="submit">Se connecter</button></Link>
                 </>
             )
         }

@@ -11,6 +11,7 @@ import {isAuth} from "./utils/apiCalls";
 import IsAuthenticatedContext from './contexts/isAuthenticatedContext';
 import UserContext from "./contexts/userContext";
 import Profile from "./components/Profile";
+import Updatepost from "./components/Updatepost";
 
 const App = () => {
 
@@ -39,6 +40,7 @@ const App = () => {
                         <Route path="/signup" element={<SignUp/>}/>
                         <Route path="/login" element={<Login />}/>
                         <Route path="/profile/:id" element={<Profile />}/>
+                        <Route path="/updatepost" element={<Updatepost />}/>
                     </Routes>
                 </Router>
                 </UserContext.Provider>
