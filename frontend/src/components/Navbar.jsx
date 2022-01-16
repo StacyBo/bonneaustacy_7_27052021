@@ -13,6 +13,7 @@ const Navbar = () => {
         localStorage.removeItem("token");
         setIsAuthenticated(false);
         navigate('/login');
+        navigate('/profile');
     }
 
     const displayConnectedButtons = () => {
@@ -22,13 +23,13 @@ const Navbar = () => {
                     <div className="user-connected me-5">
                         {user.firstName} {user.lastName} est connecté
                     </div>
-                    <button className="btn btn-outline-danger" type="submit" onClick={logout}>Se déconnecter</button>
+                    <button className="btn btn-outline-danger mx-1" type="submit" onClick={"./profile:id"}>Modifier mon profil</button>
+                    <button className="btn btn-outline-danger mx-1" type="submit" onClick={logout}>Se déconnecter</button>
                 </>
             );
         } else {
             return (
                 <>
-
                     <Link to="/signup"><button className="btn btn-outline-danger" type="submit">S'inscrire</button></Link>
                     <Link to="/login"><button className="btn btn-outline-danger mx-2" type="submit">Se connecter</button></Link>
                 </>
@@ -48,9 +49,6 @@ const Navbar = () => {
                     <ul className="navbar-nav me-auto mb-2 mb-md-0">
                         <li className="nav-item">
                             <Link className="nav-link active" aria-current="page" to="/">Accueil</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/articles">Articles</Link>
                         </li>
                     </ul>
                     {displayConnectedButtons()}

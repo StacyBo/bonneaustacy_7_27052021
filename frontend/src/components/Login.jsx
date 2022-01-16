@@ -57,7 +57,7 @@ const Login = () => {
                                     <label htmlFor="exampleInputPassword1" className="form-label">Mot de passe</label>
                                     <input type="password" className="form-control" id="exampleInputPassword1" onChange={(e) => setPassword(e.target.value)}/>
                                 </div>
-                                <button type="submit" className="btn btn-primary">Se connecter</button>
+                                <button type="submit" className="btn btn-danger">Se connecter</button>
                             </form>
                         </div>
                     </div>

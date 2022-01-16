@@ -48,9 +48,8 @@ const Home = () => {
                                     <div className="card-body">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney.</div>
                                 </div>
                                 <div className="d-flex justify-content-end mx-3 mb-2">
-                                    <button type="button" className="btn btn-danger btn-sm">Commenter</button>
-                                    <button type="button" className="btn btn-danger btn-sm mx-2">Modifier</button>
-                                    <button type="button" className="btn btn-danger btn-sm">Supprimer</button>
+                                <button type="button" className="btn btn-danger mx-1 btn-sm">Commenter</button>
+                                    <button type="button" className="btn btn-danger mx-1 btn-sm">Supprimer</button>
                                 </div>
                             </div>
                             <div className="card">
@@ -59,9 +58,8 @@ const Home = () => {
                                     <div className="card-body">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney.</div>
                                 </div>
                                 <div className="d-flex justify-content-end mx-3 mb-2">
-                                    <button type="button" className="btn btn-danger btn-sm">Commenter</button>
-                                    <button type="button" className="btn btn-danger btn-sm mx-2">Modifier</button>
-                                    <button type="button" className="btn btn-danger btn-sm">Supprimer</button>
+                                <button type="button" className="btn btn-danger mx-1 btn-sm">Commenter</button>
+                                    <button type="button" className="btn btn-danger mx-1 btn-sm">Supprimer</button>
                                 </div>
                             </div>
                             <div className="card">
@@ -70,50 +68,11 @@ const Home = () => {
                                     <div className="card-body">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney.</div>
                                 </div>
                                 <div className="d-flex justify-content-end mx-3 mb-2">
-                                    <button type="button" className="btn btn-danger btn-sm">Commenter</button>
-                                    <button type="button" className="btn btn-danger btn-sm mx-2">Modifier</button>
-                                    <button type="button" className="btn btn-danger btn-sm">Supprimer</button>
+                                    <button type="button" className="btn btn-danger mx-1 btn-sm">Commenter</button>
+                                    <button type="button" className="btn btn-danger mx-1 btn-sm">Supprimer</button>
                                 </div>
                             </div>
                         </div>
-
-                        <div className="card-footer">
-                            <p className="comment mt-0 mb-1">Commentaires :</p>
-                            <div className="card">
-                                <div className="card-body p-0 mx-3 mt-2">Pseudo<small className="text-muted mx-2">Il y a 8min</small></div>
-                                <div className="card mx-3 my-2">
-                                    <div className="card-body">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney.</div>
-                                </div>
-                                <div className="d-flex justify-content-end mx-3 mb-2">
-                                    <button type="button" className="btn btn-danger btn-sm">Commenter</button>
-                                    <button type="button" className="btn btn-danger btn-sm mx-2">Modifier</button>
-                                    <button type="button" className="btn btn-danger btn-sm">Supprimer</button>
-                                </div>
-                            </div>
-                            <div className="card">
-                                <div className="card-body p-0 mx-3 mt-2">Pseudo<small className="text-muted mx-2">Il y a 8min</small></div>
-                                <div className="card mx-3 my-2">
-                                    <div className="card-body">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney.</div>
-                                </div>
-                                <div className="d-flex justify-content-end mx-3 mb-2">
-                                    <button type="button" className="btn btn-danger btn-sm">Commenter</button>
-                                    <button type="button" className="btn btn-danger btn-sm mx-2">Modifier</button>
-                                    <button type="button" className="btn btn-danger btn-sm">Supprimer</button>
-                                </div>
-                            </div>
-                            <div className="card">
-                                <div className="card-body p-0 mx-3 mt-2">Pseudo<small className="text-muted mx-2">Il y a 8min</small></div>
-                                <div className="card mx-3 my-2">
-                                    <div className="card-body">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney.</div>
-                                </div>
-                                <div className="d-flex justify-content-end mx-3 mb-2">
-                                    <button type="button" className="btn btn-danger btn-sm">Commenter</button>
-                                    <button type="button" className="btn btn-danger btn-sm mx-2">Modifier</button>
-                                    <button type="button" className="btn btn-danger btn-sm">Supprimer</button>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                 </section>
             </main>
