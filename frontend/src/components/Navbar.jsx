@@ -1,7 +1,7 @@
-import {Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import IsAuthenticatedContext from "../contexts/isAuthenticatedContext";
 import UserContext from "../contexts/userContext";
-import {useContext} from "react";
+import { useContext } from "react";
 
 
 const Navbar = () => {
@@ -13,7 +13,10 @@ const Navbar = () => {
         localStorage.removeItem("token");
         setIsAuthenticated(false);
         navigate('/login');
-        navigate('/profile');
+    }
+
+    const updateProfile = () => {
+        navigate('/profile:id');
     }
 
     const displayConnectedButtons = () => {
@@ -23,7 +26,7 @@ const Navbar = () => {
                     <div className="user-connected me-5">
                         {user.firstName} {user.lastName} est connecté
                     </div>
-                    <button className="btn btn-outline-danger mx-1" type="submit" onClick={"./profile:id"}>Modifier mon profil</button>
+                    <button className="btn btn-outline-danger mx-1" type="submit" onClick={updateProfile}>Modifier mon profil</button>
                     <button className="btn btn-outline-danger mx-1" type="submit" onClick={logout}>Se déconnecter</button>
                 </>
             );
@@ -41,8 +44,8 @@ const Navbar = () => {
             <div className="container-fluid">
                 <Link className="navbar-brand" to="/">Groupomania</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
-                        aria-label="Toggle navigation">
+                    data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarCollapse">

@@ -8,7 +8,7 @@ const Updatepost = () => {
                 <section>
                     <div className="container card h-100 w-75 mb-4 pt-2">
                         <div className="card-body d-flex pt-1 pb-0">
-                            <h5 className="card-title">Pseudo</h5>
+                            <h5 className="card-title">Prénom Nom</h5>
                         </div>
                         <div className="card-body text-card mx-3 my-1">
                             <textarea className="form-control mb-2" rows="1" id="comment" name="text" placeholder="Ancien post"></textarea>
