@@ -19,8 +19,12 @@ const Signup = () => {
             alert('Prénom invalide');
             return false;
         }
-        if (!email) { 
+        if (!email) {
             alert('Email invalide');
+            return false;
+        }
+        if (email.includes(' ')){
+            alert('L\'Email ne doit pas contenir d\'espace')
             return false;
         }
         if (!password) {
