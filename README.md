@@ -35,3 +35,4 @@
 3. `cd frontend`
 4. `npm start`
 5. Go to [http:localhost:3000](http:localhost:3000)
+6. connect as moderator email: 'moderateur@groupomania.com' password: 'Adminmoderation'

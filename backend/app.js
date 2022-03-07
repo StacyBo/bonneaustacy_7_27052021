@@ -1,14 +1,12 @@
 const express = require('express');
-const userRoutes = require('./routes/users')
-//const postRoutes = require('./routes/post')
+const userRoutes = require('./routes/user')
+const postRoutes = require('./routes/post')
 const path = require('path');
+const multer  = require('multer')
 
 const app = express();
 const {sequelize, Users} = require('./models');
 
-
-// Parse the body of the request
-app.use(express.json());
 
 // Cors middleware
 app.use((req, res, next) => {
@@ -18,12 +16,26 @@ app.use((req, res, next) => {
     next();
 });
 
+// Parse the body of the request
+app.use(express.json());
+
 // Create tables if they doesn't already exist
 sequelize.sync();
 
+// SET STORAGE
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'images')
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now())
+    }
+})
+
+ multer({ storage: storage })
+
 // Add routes
 app.use('/api/', userRoutes);
-//app.use('/api/posts', postRoutes);
-
+app.use('/api/post/', postRoutes);
 
 module.exports = app;

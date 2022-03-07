@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./index.css";
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Home from "./components/Home";
-import SignUp from "./components/SignUp";
+import SignUp from "./components/Signup";
 import Login from "./components/Login";
 import {isAuth} from "./utils/apiCalls";
 import IsAuthenticatedContext from './contexts/isAuthenticatedContext';

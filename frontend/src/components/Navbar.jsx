@@ -16,7 +16,7 @@ const Navbar = () => {
     }
 
     const updateProfile = () => {
-        navigate('/profile:id');
+        navigate('/profile/' + user.id);
     }
 
     const displayConnectedButtons = () => {

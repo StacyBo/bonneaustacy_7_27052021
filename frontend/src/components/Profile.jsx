@@ -1,6 +1,11 @@
 import Navbar from './Navbar';
+import UserContext from "../contexts/userContext";
+import { useContext } from "react";
+
 
 const Profile = () => {
+    const [user] = useContext(UserContext);
+
     return (
         <>
             < Navbar />
@@ -13,20 +18,20 @@ const Profile = () => {
                                 <div className="d-flex flex-row align-items-center mb-4">
                                     <i className="fas fa-user fa-lg me-3 fa-fw"></i>
                                     <div className="form-outline flex-fill mb-0">
-                                        <label className="form-label" htmlFor="lastname">Nom</label>
+                                        <label className="form-label" htmlFor="lastname">{user.lastName}</label>
                                     </div>
                                 </div>
                                 <div className="d-flex flex-row align-items-center mb-4">
                                     <i className="fas fa-user fa-lg me-3 fa-fw"></i>
                                     <div className="form-outline flex-fill mb-0">
-                                        <label className="form-label" htmlFor="firstname" >Prénom</label>
+                                        <label className="form-label" htmlFor="firstname" >{user.firstName}</label>
                                     </div>
                                 </div>
 
                                 <div className="d-flex flex-row align-items-center mb-4">
                                     <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                     <div className="form-outline flex-fill mb-0">
-                                        <label className="form-label" htmlFor="email">Email</label>
+                                        <label className="form-label" htmlFor="email">{user.email}</label>
                                     </div>
                                 </div>
                                 
