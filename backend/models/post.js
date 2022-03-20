@@ -17,7 +17,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Post.init({
-    content: DataTypes.STRING,
+    content: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     imageUrl: DataTypes.STRING,
     createdAt: {
       type: DataTypes.DATE,

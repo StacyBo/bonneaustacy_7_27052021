@@ -1,15 +1,13 @@
-import Navbar from "./Navbar";
+import Navbar from '../components/Navbar';
 import {postLogin} from "../utils/apiCalls";
 import {useContext, useState} from "react";
 import {useNavigate} from 'react-router-dom';
-import IsAuthenticatedContext from "../contexts/isAuthenticatedContext";
 import UserContext from "../contexts/userContext";
 
-const Login = () => {
+function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    const [isAuthenticated, setIsAuthenticated] = useContext(IsAuthenticatedContext);
     const [user, setUser] = useContext(UserContext);
     const validateForm = () => {
         if (!email) {
@@ -32,7 +30,6 @@ const Login = () => {
             if (response.user.id > 0 && response.token) {
                 localStorage.setItem("token", response.token);
                 setUser(response.user);
-                setIsAuthenticated(true);
                 navigate('/');
             } else {
                 alert("Connexion impossible");

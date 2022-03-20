@@ -1,10 +1,11 @@
-import Navbar from "./Navbar";
+import Navbar from '../components/Navbar';
 import { postUser } from "../utils/apiCalls";
 import { useState, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 
 
-const Signup = () => {
+function Signup() {
+
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -36,7 +37,7 @@ const Signup = () => {
             alert('Email invalide');
             return false;
         }
-        if ( password === "" || password.length < 9) {
+        if (password === "" || password.length < 5) {
             alert('Mot de passe invalide');
             return false;
         }
@@ -89,7 +90,7 @@ const Signup = () => {
                                         <label className="form-label" htmlFor="email">Email</label>
                                         <input type="text" id="email"
                                             className="form-control" onChange={(e) => setEmail(e.target.value)} />
-                                            <div class="invalid-feedback" ref={inputEmailValidation}></div>
+                                        <div class="invalid-feedback" ref={inputEmailValidation}></div>
                                     </div>
                                 </div>
 

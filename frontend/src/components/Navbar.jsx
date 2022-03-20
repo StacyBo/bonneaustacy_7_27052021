@@ -1,17 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
-import IsAuthenticatedContext from "../contexts/isAuthenticatedContext";
 import UserContext from "../contexts/userContext";
 import { useContext } from "react";
 
 
-const Navbar = () => {
+function Navbar() {
     const navigate = useNavigate();
-    const [isAuthenticated, setIsAuthenticated] = useContext(IsAuthenticatedContext);
-    const [user] = useContext(UserContext);
+    const [user, setUser] = useContext(UserContext);
 
     const logout = () => {
         localStorage.removeItem("token");
-        setIsAuthenticated(false);
+        setUser(null);
         navigate('/login');
     }
 
@@ -20,7 +18,7 @@ const Navbar = () => {
     }
 
     const displayConnectedButtons = () => {
-        if (isAuthenticated) {
+        if (user) {
             return (
                 <>
                     <div className="user-connected me-5">

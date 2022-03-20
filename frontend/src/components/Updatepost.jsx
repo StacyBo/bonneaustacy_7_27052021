@@ -1,6 +1,6 @@
 import Navbar from './Navbar';
 
-const Updatepost = () => {
+function UpdatePost() {
     return (
         <>
             < Navbar />
@@ -28,4 +28,4 @@ const Updatepost = () => {
         </>)
 }
 
-export default Updatepost;
+export default UpdatePost;

@@ -37,7 +37,6 @@ exports.login = async (req, res, next) => {
     console.log(password)
     console.log(email)
     const user = await Users.findOne({ where: { email: email } });
-    console.log(user.password)
     if (!user) {
         return res.status(401).json({ error: 'Utilisateur non trouvé !' });
     }

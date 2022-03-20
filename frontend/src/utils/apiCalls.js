@@ -1,8 +1,9 @@
+//Ajout d'utilisateur
 export function postUser(params) {
-    return fetch('http://localhost:5000/api/users', {
+    return fetch('http://localhost:5000/api/user', {
         method: 'POST',
         body: JSON.stringify(params),
-        headers: {'Content-Type': 'application/json; charset=utf-8'},
+        headers: { 'Content-Type': 'application/json; charset=utf-8' },
     })
         .then(function (response) {
             return response.json();
@@ -13,11 +14,12 @@ export function postUser(params) {
 
 }
 
+// pour se connecter
 export function postLogin(params) {
     return fetch('http://localhost:5000/api/login', {
         method: 'POST',
         body: JSON.stringify(params),
-        headers: {'Content-Type': 'application/json; charset=utf-8'},
+        headers: { 'Content-Type': 'application/json; charset=utf-8' },
     })
         .then(function (response) {
             return response.json();
@@ -27,18 +29,6 @@ export function postLogin(params) {
         });
 }
 
-export function getSubjects() {
-    return fetch('http://localhost:5000/api/subjects', {
-        method: 'GET',
-        headers: {'Content-Type': 'application/json; charset=utf-8', 'Authorization': localStorage.getItem('token')},
-    })
-        .then(function (response) {
-            return response.json();
-        })
-        .catch(function (error) {
-            console.warn(error)
-        });
-}
 
 export async function isAuth() {
     if (!localStorage.getItem('token')) {
@@ -46,8 +36,8 @@ export async function isAuth() {
     }
     return fetch('http://localhost:5000/api/auth', {
         method: 'POST',
-        body: JSON.stringify({token: localStorage.getItem('token')}),
-        headers: {'Content-Type': 'application/json; charset=utf-8'},
+        body: JSON.stringify({ token: localStorage.getItem('token') }),
+        headers: { 'Content-Type': 'application/json; charset=utf-8' },
     })
         .then(function (response) {
             return response.json();
@@ -63,4 +53,66 @@ export async function isAuth() {
                 return false;
             }
         });
+}
+
+// recuperer les posts
+export function getPosts() {
+    return fetch('http://localhost:5000/api/post', {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json; charset=utf-8', 'Authorization': localStorage.getItem('token')},
+    })
+        .then(function (response) {
+            return response.json();
+        })
+        .catch(function (error) {
+            console.warn(error)
+        });
+}
+
+// Creer un post
+export function postPost(params) {
+    let data = new FormData();
+    data.append('post', JSON.stringify(params.post));
+    data.append('image', params.imageUrl);
+
+    return fetch('http://localhost:5000/api/post', {
+        method: 'POST',
+        body: data,
+        headers: { 'Authorization': localStorage.getItem('token') },
+    })
+        .then(function (response) {
+            return response.json();
+        })
+        .catch(function (error) {
+            console.warn(error)
+        });
+}
+
+
+// Recuperer les 3 derniers posts
+export function getLastPosts() {
+    return fetch('http://localhost:5000/api/post/lastposts', {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json; charset=utf-8', 'Authorization': localStorage.getItem('token')},
+    })
+        .then(function (response) {
+            return response.json();
+        })
+        .catch(function (error) {
+            console.warn(error)
+        });
+}
+
+// Supprimer un post 
+export function deletePost(params) {
+    return fetch('http://localhost:5000/api/post/' + params.post.id, {
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/json; charset=utf-8', 'Authorization': localStorage.getItem('token')},
+    })
+    .then(function (response) {
+        return response.json();
+    })
+    .catch(function (error) {
+        console.warn(error)
+    });
 }
