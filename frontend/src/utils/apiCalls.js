@@ -103,6 +103,25 @@ export function getLastPosts() {
         });
 }
 
+//Modifier un post 
+export function updatePost(params) {
+    let data = new FormData();
+    data.append('post', JSON.stringify(params.post));
+    data.append('image', params.imageUrl);
+
+    return fetch('http://localhost:5000/api/post/' + params.post.id, {
+        method: 'PUT',
+        body: data,
+        headers: {'Authorization': localStorage.getItem('token')},
+    })
+        .then(function (response) {
+            return response.json();
+        })
+        .catch(function (error) {
+            console.warn(error)
+        });
+}
+
 // Supprimer un post 
 export function deletePost(params) {
     return fetch('http://localhost:5000/api/post/' + params.post.id, {

@@ -63,6 +63,7 @@ function Signup() {
             <Navbar />
             <main className="container">
                 <h2>S'inscrire</h2>
+                <p>Si vous ne possédez pas de compte, inscrivez-vous via ce formulaire.</p>
                 <section className="vh-100">
                     <div className="container h-100 w-50">
                         <div className="row d-flex justify-content-center h-100">
