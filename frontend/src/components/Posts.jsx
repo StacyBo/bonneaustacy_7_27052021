@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { getPosts } from "../utils/apiCalls";
 import Post from "./Post";
 
-
-
 const Posts = () => {
     const [posts, setPosts] = useState([]);
 
@@ -15,19 +13,17 @@ const Posts = () => {
     },
         [])
 
+return (
+    <>
+        <section>
+            {posts.map((postsResult) => {
+                return < Post post={postsResult}
+                />
+            })}
 
-
-    return (
-        <>
-            <section>
-                {posts.map((postsResult) => {
-                    return < Post post={postsResult}
-                    />
-                })}
-
-            </section>
-        </>
-    )
+        </section>
+    </>
+)
 }
 
 export default Posts;

@@ -5,12 +5,9 @@ postCtrl = require('../controllers/post');
 const auth = require('../middleware/auth');
 
 router.post('/', auth, postCtrl.addPost);
-
 router.patch('/:id', auth, postCtrl.updatePost);
-
 router.get('/', auth, postCtrl.getPosts);
 router.get('/lastposts', auth, postCtrl.getLastPosts);
-
 router.delete('/:id', auth, postCtrl.deletePost);
 
 module.exports = router;

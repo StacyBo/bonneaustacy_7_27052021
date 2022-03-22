@@ -1,13 +1,11 @@
 import UserContext from "../contexts/userContext";
 import { useContext } from "react";
-import CreateComment from '../components/CreateComment';
+import CreateComment from './CreateComment';
 import Comments from './Comments'
 
-
-
-const Post = (props) => {
+function Post(props) {
     console.log(props)
-    const [user] = useContext(UserContext);
+    const [user] = useContext(UserContext); 
 
     return (
         <>

@@ -1,7 +1,7 @@
 import Navbar from '../components/Navbar';
-import {postLogin} from "../utils/apiCalls";
-import {useContext, useState} from "react";
-import {useNavigate} from 'react-router-dom';
+import { postLogin } from "../utils/apiCalls";
+import { useContext, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import UserContext from "../contexts/userContext";
 
 function Login() {
@@ -24,9 +24,9 @@ function Login() {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (!validateForm()) {
-            return;
+            return
         }
-        postLogin({password, email}).then(function (response) {
+        postLogin({ password, email }).then(function (response) {
             if (response.user.id > 0 && response.token) {
                 localStorage.setItem("token", response.token);
                 setUser(response.user);
@@ -48,11 +48,17 @@ function Login() {
                             <form onSubmit={handleSubmit}>
                                 <div className="mb-3">
                                     <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
-                                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={(e) => setEmail(e.target.value)} />
+                                    <input type="email" className="form-control is-invalid" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={(e) => setEmail(e.target.value)} />
+                                    { validateForm && email ?
+                                    <span className="text-danger">L'email est invalide !</span> 
+                                    :
+                                    null
+                                    }
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="exampleInputPassword1" className="form-label">Mot de passe</label>
-                                    <input type="password" className="form-control" id="exampleInputPassword1" onChange={(e) => setPassword(e.target.value)}/>
+                                    <input type="password" className="form-control is-invalid" id="exampleInputPassword1" onChange={(e) => setPassword(e.target.value)} />
+                                    <span className="text-danger">Le mot de passe est invalide !</span>
                                 </div>
                                 <button type="submit" className="btn btn-danger">Se connecter</button>
                             </form>
@@ -63,7 +69,7 @@ function Login() {
             </main>
 
         </>
-);
+    );
 }
 
 export default Login;
