@@ -2,22 +2,14 @@ import { useEffect, useState } from "react";
 import { getPosts } from "../utils/apiCalls";
 import Post from "./Post";
 
-const Posts = () => {
-    const [posts, setPosts] = useState([]);
+const Posts = (props) => {
 
-    useEffect(() => {
-        getPosts()
-            .then((postsResult) => {
-                setPosts(postsResult)
-            })
-    },
-        [])
 
 return (
     <>
         <section>
-            {posts.map((postsResult) => {
-                return < Post post={postsResult}
+            {props.posts.map((post, index) => {
+                return < Post key={index} post={post}
                 />
             })}
 

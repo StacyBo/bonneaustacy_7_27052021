@@ -59,7 +59,7 @@ export async function isAuth() {
 export function getPosts() {
     return fetch('http://localhost:5000/api/post', {
         method: 'GET',
-        headers: {'Content-Type': 'application/json; charset=utf-8', 'Authorization': localStorage.getItem('token')},
+        headers: { 'Content-Type': 'application/json; charset=utf-8', 'Authorization': localStorage.getItem('token') },
     })
         .then(function (response) {
             return response.json();
@@ -70,15 +70,15 @@ export function getPosts() {
 }
 
 // Creer un post
-export function postPost(params) {
-    let data = new FormData();
+export function createPost(params) {
+    /*let data = new FormData();
     data.append('post', JSON.stringify(params.post));
-    data.append('image', params.imageUrl);
+    data.append('image', params.imageUrl);*/
 
     return fetch('http://localhost:5000/api/post', {
         method: 'POST',
-        body: data,
-        headers: { 'Authorization': localStorage.getItem('token') },
+        body: JSON.stringify(params.post),
+        headers: { 'Content-Type': 'application/json', 'Authorization': localStorage.getItem('token') },
     })
         .then(function (response) {
             return response.json();
@@ -93,7 +93,7 @@ export function postPost(params) {
 export function getLastPosts() {
     return fetch('http://localhost:5000/api/post/lastposts', {
         method: 'GET',
-        headers: {'Content-Type': 'application/json; charset=utf-8', 'Authorization': localStorage.getItem('token')},
+        headers: { 'Content-Type': 'application/json; charset=utf-8', 'Authorization': localStorage.getItem('token') },
     })
         .then(function (response) {
             return response.json();
@@ -112,7 +112,7 @@ export function updatePost(params) {
     return fetch('http://localhost:5000/api/post/' + params.post.id, {
         method: 'PUT',
         body: data,
-        headers: {'Authorization': localStorage.getItem('token')},
+        headers: { 'Authorization': localStorage.getItem('token') },
     })
         .then(function (response) {
             return response.json();
@@ -126,12 +126,12 @@ export function updatePost(params) {
 export function deletePost(params) {
     return fetch('http://localhost:5000/api/post/' + params.post.id, {
         method: 'DELETE',
-        headers: {'Content-Type': 'application/json; charset=utf-8', 'Authorization': localStorage.getItem('token')},
+        headers: { 'Content-Type': 'application/json; charset=utf-8', 'Authorization': localStorage.getItem('token') },
     })
-    .then(function (response) {
-        return response.json();
-    })
-    .catch(function (error) {
-        console.warn(error)
-    });
+        .then(function (response) {
+            return response.json();
+        })
+        .catch(function (error) {
+            console.warn(error)
+        });
 }

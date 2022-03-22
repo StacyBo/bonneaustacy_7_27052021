@@ -17,9 +17,9 @@ const LastPosts = () => {
         <>
             <section>
                 <div className="container card h-100 w-75 mb-4 pt-2">
-                    <h3 className="card-header mb-4">Vos 3 derniers postes :</h3>
-                    {lastPosts.map((lastpost) => {
-                        return < LastPost lastPost={lastpost}
+                    <h3 className="card-header mb-4">Vos 3 derniers articles :</h3>
+                    {lastPosts.map((lastpost, index) => {
+                        return < LastPost key={index} lastPost={lastpost}
                         />
                     })}
                 </div>

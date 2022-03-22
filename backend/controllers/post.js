@@ -6,10 +6,9 @@ const { patch } = require('../routes/user');
 
 // ajouter de la sécurité (injection SQL) faire requête préparée
 exports.addPost = async (req, res, next) => {
-//console.log(req.currentUser)
-//onsole.log(req.body.content)
-console.log(req.currentUser.id)
-    const posts = await sequelize.query (`INSERT INTO posts (content, userId) VALUES ("${req.body.content}", "${req.currentUser.id}")`, { type:QueryTypes.INSERT })
+//console.log(req.body.content)
+console.log(req)
+    const posts = await sequelize.query (`INSERT INTO posts (content, userId, updatedAt) VALUES ("${req.body.content}", "${req.currentUser.id}", "${(new Date()).toISOString().slice(0, 19).replace('T', ' ')}")`, { type:QueryTypes.INSERT })
     res.status(200).json(posts)
 }
 // ajouter de la sécurité (injection SQL)
@@ -25,7 +24,7 @@ exports.deletePost = async (req, res, next) => {
 }
 
 exports.getPosts = async (req, res, next) => {
-    const posts = await sequelize.query("select * from posts" , { type: QueryTypes.SELECT })
+    const posts = await sequelize.query("select * from posts ORDER BY updatedAt DESC" , { type: QueryTypes.SELECT })
     res.status(200).json(posts)
 }
 
