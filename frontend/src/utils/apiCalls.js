@@ -110,9 +110,9 @@ export function updatePost(params) {
     data.append('image', params.imageUrl);
 
     return fetch('http://localhost:5000/api/post/' + params.post.id, {
-        method: 'PUT',
+        method: 'PATCH',
         body: data,
-        headers: { 'Authorization': localStorage.getItem('token') },
+        headers: { 'Content-Type': 'application/json; charset=utf-8','Authorization': localStorage.getItem('token') },
     })
         .then(function (response) {
             return response.json();
@@ -129,7 +129,7 @@ export function deletePost(params) {
         headers: { 'Content-Type': 'application/json; charset=utf-8', 'Authorization': localStorage.getItem('token') },
     })
         .then(function (response) {
-            return response.json();
+            return response;
         })
         .catch(function (error) {
             console.warn(error)

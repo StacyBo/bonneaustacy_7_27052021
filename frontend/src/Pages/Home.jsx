@@ -4,29 +4,33 @@ import Navbar from '../components/Navbar';
 import CreatePost from '../components/CreatePost';
 import Posts from '../components/Posts';
 import { Link } from "react-router-dom";
-import {getPosts} from '../utils/apiCalls';
+import { getPosts, deletePost } from '../utils/apiCalls';
 
 
 function Home() {
     const [user] = useContext(UserContext);
     const [posts, setPosts] = useState([]);
 
+    const refreshPosts = () => {
+        getPosts().then((postsResult) => {
+            setPosts(postsResult)
+        })
+    }
+    const onPostCreated = () => {
+        refreshPosts()
+    }
+    const onPostUpdated = () => {
+        refreshPosts();
+    }
+    const handlePostDelete = (post) => {
+        deletePost({post : post}).then(function () {
+            refreshPosts();
+        });
+    }
     useEffect(() => {
         refreshPosts()
     },
         []);
-
-    const refreshPosts = () => {
-        getPosts()
-            .then((postsResult) => {
-                setPosts(postsResult)
-            })
-    }
-
-    const onPostCreated = () => {
-        refreshPosts()
-    }
-
 
     if (user) {
         return (
@@ -36,7 +40,7 @@ function Home() {
                     <section>
                         < CreatePost onPostCreated={onPostCreated} />
                         <div className="container card h-100 w-75 mb-4 pt-2">
-                            < Posts posts={posts} />
+                            < Posts posts={posts} handlePostDelete={handlePostDelete} onPostUpdated={onPostUpdated}/>
                             <span className="border-top mt-2 mb-2"></span>
                         </div>
                     </section>
