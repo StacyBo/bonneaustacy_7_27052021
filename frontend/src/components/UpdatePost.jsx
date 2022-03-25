@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { postPost, postUser, updatePost } from "../utils/apiCalls";
 
 
-function UpdatePost(props) {
+const UpdatePost = (props) => {
     const [contentModified, setContentModified] = useState('');
-    const [imageModified, setImageModified] = useState('');
-    const [newImageUrl, setNewImageUrl] = useState('');
+    //const [imageModified, setImageModified] = useState('');
+    //const [newImageUrl, setNewImageUrl] = useState('');
 
     useEffect(() => {
         setContentModified(props.post.content);
@@ -20,7 +20,7 @@ function UpdatePost(props) {
         const params = {
             post: {
                 id: props.post.id,
-                content: contentModified
+                content: contentModified,
             },
             //imageUrl: imageModified
         }
