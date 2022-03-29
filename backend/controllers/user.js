@@ -32,7 +32,7 @@ exports.postUser = async (req, res, next) => {
 };
 
 exports.login = async (req, res, next) => {
-    console.log(req.body)
+    //console.log(req.body)
     const {email, password} = req.body;
     console.log(password)
     console.log(email)

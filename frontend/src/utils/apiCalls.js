@@ -55,7 +55,7 @@ export async function isAuth() {
         });
 }
 
-// recuperer les posts
+// recuperer les articles
 export function getPosts() {
     return fetch('http://localhost:5000/api/post', {
         method: 'GET',
@@ -69,7 +69,7 @@ export function getPosts() {
         });
 }
 
-// Creer un post
+// Creer un article
 export function createPost(params) {
     /*let data = new FormData();
     data.append('post', JSON.stringify(params.post));
@@ -89,7 +89,7 @@ export function createPost(params) {
 }
 
 
-// Recuperer les 3 derniers posts
+// Recuperer les 3 derniers articles
 export function getLastPosts() {
     return fetch('http://localhost:5000/api/post/lastposts', {
         method: 'GET',
@@ -103,7 +103,7 @@ export function getLastPosts() {
         });
 }
 
-//Modifier un post 
+//Modifier un article 
 export function updatePost(params) {
     /*let data = new FormData();
     data.append('post', JSON.stringify(params.post));
@@ -122,7 +122,7 @@ export function updatePost(params) {
         });
 }
 
-// Supprimer un post 
+// Supprimer un article 
 export function deletePost(params) {
     return fetch('http://localhost:5000/api/post/' + params.post.id, {
         method: 'DELETE',
@@ -130,6 +130,49 @@ export function deletePost(params) {
     })
         .then(function (response) {
             return response;
+        })
+        .catch(function (error) {
+            console.warn(error)
+        });
+}
+
+// creer un commentaire
+export function createComment(params) {
+    return fetch('http://localhost:5000/api/comment/post/' + params.postId, {
+        method: 'POST',
+        body: JSON.stringify(params),
+        headers: {'Content-Type': 'application/json; charset=utf-8', 'Authorization': localStorage.getItem('token')},
+    })
+        .then(function (response) {
+            return response.json();
+        })
+        .catch(function (error) {
+            console.warn(error)
+        });
+}
+
+// récuperer les commentaires
+export function getComments(params) {
+    return fetch('http://localhost:5000/api/comment/post/' + params.postId, {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json; charset=utf-8', 'Authorization': localStorage.getItem('token')},
+    })
+        .then(function (response) {
+            return response.json();
+        })
+        .catch(function (error) {
+            console.warn(error)
+        });
+}
+
+//supprimer un commentaire
+export function deleteComment(params) {
+    return fetch('http://localhost:5000/api/comment/' + params.commentId, {
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/json; charset=utf-8', 'Authorization': localStorage.getItem('token')},
+    })
+        .then(function (response) {
+            return response.json();
         })
         .catch(function (error) {
             console.warn(error)

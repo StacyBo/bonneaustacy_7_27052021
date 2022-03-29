@@ -28,9 +28,10 @@ function Home() {
         });
     }
     useEffect(() => {
-        refreshPosts()
-    },
-        []);
+        if (user) {
+            refreshPosts();
+        }
+    }, [user]);
 
     if (user) {
         return (
