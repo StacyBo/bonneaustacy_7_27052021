@@ -165,6 +165,21 @@ export function getComments(params) {
         });
 }
 
+// Modifier le commentaire
+export function updateComment(params) {
+    return fetch('http://localhost:5000/api/comment/' + params.comment.id, {
+        method: 'PUT',
+        body: JSON.stringify(params),
+        headers: {'Content-Type': 'application/json; charset=utf-8', 'Authorization': localStorage.getItem('token')},
+    })
+        .then(function (response) {
+            return response.json();
+        })
+        .catch(function (error) {
+            console.warn(error)
+        });
+}
+
 //supprimer un commentaire
 export function deleteComment(params) {
     return fetch('http://localhost:5000/api/comment/' + params.commentId, {
@@ -172,7 +187,7 @@ export function deleteComment(params) {
         headers: {'Content-Type': 'application/json; charset=utf-8', 'Authorization': localStorage.getItem('token')},
     })
         .then(function (response) {
-            return response.json();
+            return response.json;
         })
         .catch(function (error) {
             console.warn(error)

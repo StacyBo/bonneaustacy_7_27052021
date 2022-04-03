@@ -6,7 +6,7 @@ import UpdatePost from './UpdatePost';
 import Comments from './Comments'
 
 function Post(props) {
-    //console.log(props.post.User.firstName)
+    //console.log(props)
     const [user] = useContext(UserContext);
     const [editMode, setEditMode] = useState(false);
     const [editCreateComment, setEditCreateComment] = useState(false);
@@ -28,6 +28,10 @@ function Post(props) {
         refreshComments();
     }
 
+    const onCommentUpdated = () => {
+        refreshComments();
+    }
+
     const handleCommentDelete = (comment) => {
         deleteComment({ commentId: comment.id }).then(function () {
             refreshComments();
@@ -35,8 +39,8 @@ function Post(props) {
     };
 
     const displayActionButtons = () => {
-        if (user.id === props.post.userId) {
-            //console.log(props.post)
+        if (user.isAdmin || user.id === props.post.userId){
+             //console.log(props.post)
             return (
                 <>
                     <button type="button" className="btn btn-danger btn-sm mx-2"
@@ -60,19 +64,23 @@ function Post(props) {
             {
                 editMode ? <UpdatePost post={props.post} onPostUpdated={onPostUpdated} handleCancel={() => setEditMode(false)} /> :
                     <div>
-                        <div className="card-body d-flex pt-1 pb-0">
-                            <h5 className="card-title">{props.post.firstName} {props.post.lastName}</h5>
+                        <div className="card-title d-flex">
+                            <h5 className="card-title">{props.post.User.firstName} {props.post.User.lastName}</h5>
                             <p className="card-text mx-2"><small className="text-muted">{(new Date(props.post.updatedAt)).toLocaleString()}</small></p>
                         </div>
-                        <div className="card-body text-card mx-3 my-1">
-                            <p className="card-text">{props.post.content}</p>
+                        <div className="text-card my-1">
+                            <p className="card-text mx-2">{props.post.content}</p>
                             <img src="..." className="img-fluid" alt="..."></img>
                         </div>
                         <div className="d-flex justify-content-end mt-2 mb-2">
                             <button onClick={() => { setEditCreateComment(!editCreateComment) }} type="button" className="btn btn-danger btn-sm">Commenter</button>
                             {displayActionButtons()}
                         </div>
-                        < Comments comments={comments} post={props.post} handleCommentDelete={handleCommentDelete} />
+                        <Comments
+                            comments={comments}
+                            post={props.post}
+                            handleCommentDelete={handleCommentDelete}
+                            onCommentUpdated={onCommentUpdated}/>
 
                         {
                             editCreateComment ?

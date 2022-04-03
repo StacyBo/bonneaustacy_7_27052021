@@ -40,9 +40,8 @@ function Home() {
                 <main>
                     <section>
                         < CreatePost onPostCreated={onPostCreated} />
-                        <div className="container card h-100 w-75 mb-4 pt-2">
+                        <div className="container card h-100 w-75 mb-3 pt-1">
                             < Posts posts={posts} handlePostDelete={handlePostDelete} onPostUpdated={onPostUpdated}/>
-                            <span className="border-top mt-2 mb-2"></span>
                         </div>
                     </section>
                 </main>

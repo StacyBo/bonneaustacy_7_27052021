@@ -1,7 +1,7 @@
 import Navbar from '../components/Navbar';
 import UserContext from "../contexts/userContext";
 import { useContext } from "react";
-import UpdateProfile from "../components/UpdateProfile";
+//import UpdateProfile from "../components/UpdateProfile";
 import LastPosts from "../components/LastPosts"
 
 
@@ -36,9 +36,9 @@ function Profile() {
                                 </div>
                             </div>
 
-                            <span className="border-top mt-2 mb-2"></span>
+                            {/*<span className="border-top mt-2 mb-2"></span>
 
-                            <UpdateProfile />
+                            <UpdateProfile />*/}
                         </div>
                     </div>
                     <LastPosts />

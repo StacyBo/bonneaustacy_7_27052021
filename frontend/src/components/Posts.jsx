@@ -8,8 +8,13 @@ const Posts = (props) => {
     return (
         <>
             <section>
-                {props.posts.map((post,index) => {
-                    return < Post key={index} post={post} handlePostDelete={() => props.handlePostDelete(post)} onPostUpdated={props.onPostUpdated} />;
+                {props.posts.map((post, index) => {
+                    return < Post
+                        key={index}
+                        post={post}
+                        handlePostDelete={() => props.handlePostDelete(post)}
+                        onPostUpdated={props.onPostUpdated}
+                    />;
                 })}
 
             </section>

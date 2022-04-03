@@ -29,13 +29,44 @@ exports.addComment = async (req, res, next) => {
 
 // récupérer les commentaires
 exports.getComments = async (req, res, next) => {
-    const comments = await sequelize.query("select * from comments WHERE postId=? ORDER BY updatedAt ASC" , { replacements: [req.params.postId], type: QueryTypes.SELECT })
-    res.status(200).json(comments)
-}
+    const comments = await Comment.findAll({
+        include: [{
+            model: Users
+        }],
+        order: [
+            ['updatedAt', 'ASC'],
+        ],
+        where: {
+            postId: req.params.postId
+        }
+    });
+    res.status(200).json(comments);
+
+};
+
+// modifier le commentaire
+exports.updateComment = async (req, res, next) => {
+    // Moderator can update every posts
+    const whereClause = { id: req.params.id }
+    if (req.currentUser.isAdmin === false) {
+        whereClause.userId = req.currentUser.id;
+    }
+    const comment = await Comment.findOne({ where: whereClause });
+    if (!comment) {
+        return res.status(404).json({ message: "Le commentaire n'existe pas" })
+    }
+    try {
+        await comment.update({ content: req.body.comment.content });
+        await comment.save();
+        return res.status(200).json({ message: 'Commentaire modifié' });
+    } catch (error) {
+        return res.status(400).json({ error });
+    }
+};
 
 // supprimer un commentaire 
 exports.deleteComment = async (req, res, next) => {
-    const comments = await 
-    sequelize.query("DELETE FROM comments WHERE id=" + req.params.id, { type: QueryTypes.DELETE })
+    const comments = await
+        sequelize.query("DELETE FROM comments WHERE id=" + req.params.id, { type: QueryTypes.DELETE })
     res.status(200).json(comments)
 }

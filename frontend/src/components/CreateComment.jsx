@@ -2,7 +2,7 @@ import {createComment} from "../utils/apiCalls";
 import {useEffect, useRef, useState} from "react";
 
 function CreateComment(props) {
-    console.log(props)
+    //console.log(props)
     const [content, setContent] = useState("")
     const inputRef = useRef();
 
