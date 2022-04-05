@@ -47,7 +47,7 @@ function Post(props) {
                         onClick={() => setEditMode(!editMode)}>Modifier
                     </button>
                     <button type="button" className="btn btn-danger btn-sm"
-                        onClick={props.handlePostDelete}>Supprimer
+                        onClick={props.handlePostDelete}><i class="fas fa-trash-alt"></i>
                     </button>
                 </>
             )
@@ -63,13 +63,13 @@ function Post(props) {
         <>
             {
                 editMode ? <UpdatePost post={props.post} onPostUpdated={onPostUpdated} handleCancel={() => setEditMode(false)} /> :
-                    <div>
+                    <div className="card mb-3 p-3">
                         <div className="card-title d-flex">
-                            <h5 className="card-title">{props.post.User.firstName} {props.post.User.lastName}</h5>
+                            <h5 className="card-title mb-0">{props.post.User.firstName} {props.post.User.lastName}</h5>
                             <p className="card-text mx-2"><small className="text-muted">{(new Date(props.post.updatedAt)).toLocaleString()}</small></p>
                         </div>
                         <div className="text-card my-1">
-                            <p className="card-text mx-2">{props.post.content}</p>
+                            <p className="card-text mx-3">{props.post.content}</p>
                             <img src="..." className="img-fluid" alt="..."></img>
                         </div>
                         <div className="d-flex justify-content-end mt-2 mb-2">

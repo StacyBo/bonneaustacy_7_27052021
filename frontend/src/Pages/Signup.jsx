@@ -1,7 +1,9 @@
 import Navbar from '../components/Navbar';
+import { Link } from "react-router-dom";
 import { postUser } from "../utils/apiCalls";
 import { useState, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
+import LogoGroupomania from '../logogroupo.svg';
 
 
 function Signup() {
@@ -61,63 +63,75 @@ function Signup() {
     return (
         <>
             <Navbar />
-            <main className="container">
-                <h2>S'inscrire</h2>
-                <p>Si vous ne possédez pas de compte, inscrivez-vous via ce formulaire.</p>
-                <section className="vh-100">
-                    <div className="container h-100 w-50">
-                        <div className="row d-flex justify-content-center h-100">
-                            <form className="mx-1 mx-md-4">
-                                <div className="d-flex flex-row align-items-center mb-4">
-                                    <i className="fas fa-user fa-lg me-3 fa-fw"></i>
-                                    <div className="form-outline flex-fill mb-0">
-                                        <label className="form-label" htmlFor="lastname">Nom</label>
-                                        <input type="text" id="lastname"
-                                            className="form-control" onChange={(e) => setLastName(e.target.value)} />
+            <main className="container w-75">
+                <div className="card p-4">
+                    <h2 className="text-center">S'inscrire</h2>
+                    <p className="text-center">Si vous ne possédez pas de compte, <br />inscrivez-vous via ce formulaire.</p>
+                    <section className="vh-78">
+                        <div className="container h-100 w-75">
+                            <div className="row d-flex justify-content-center h-100">
+                                <form className="p-0">
+                                    <div className="d-flex flex-row align-items-center mb-4">
+                                        <i className="fas fa-user fa-lg me-3 fa-fw"></i>
+                                        <div className="form-outline flex-fill mb-0">
+                                            <label className="form-label" htmlFor="lastname">Nom</label>
+                                            <input type="text" id="lastname"
+                                                className="form-control" onChange={(e) => setLastName(e.target.value)} />
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="d-flex flex-row align-items-center mb-4">
-                                    <i className="fas fa-user fa-lg me-3 fa-fw"></i>
-                                    <div className="form-outline flex-fill mb-0">
-                                        <label className="form-label" htmlFor="firstname">Prénom</label>
-                                        <input type="text" id="firstname"
-                                            className="form-control" onChange={(e) => setFirstName(e.target.value)} />
+                                    <div className="d-flex flex-row align-items-center mb-4">
+                                        <i className="fas fa-user fa-lg me-3 fa-fw"></i>
+                                        <div className="form-outline flex-fill mb-0">
+                                            <label className="form-label" htmlFor="firstname">Prénom</label>
+                                            <input type="text" id="firstname"
+                                                className="form-control" onChange={(e) => setFirstName(e.target.value)} />
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div className="d-flex flex-row align-items-center mb-4">
-                                    <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                    <div className="form-outline flex-fill mb-0">
-                                        <label className="form-label" htmlFor="email">Email</label>
-                                        <input type="text" id="email"
-                                            className="form-control" onChange={(e) => setEmail(e.target.value)} />
-                                        <div class="invalid-feedback" ref={inputEmailValidation}></div>
+                                    <div className="d-flex flex-row align-items-center mb-4">
+                                        <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                                        <div className="form-outline flex-fill mb-0">
+                                            <label className="form-label" htmlFor="email">Email</label>
+                                            <input type="text" id="email"
+                                                className="form-control" onChange={(e) => setEmail(e.target.value)} />
+                                            <div class="invalid-feedback" ref={inputEmailValidation}></div>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div className="d-flex flex-row align-items-center mb-4">
-                                    <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
-                                    <div className="form-outline flex-fill mb-0">
-                                        <label className="form-label" htmlFor="password">Mot de passe</label>
-                                        <input type="password" id="password"
-                                            className="form-control" onChange={(e) => setPassword(e.target.value)} />                                    </div>
-                                </div>
+                                    <div className="d-flex flex-row align-items-center mb-4">
+                                        <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
+                                        <div className="form-outline flex-fill mb-0">
+                                            <label className="form-label" htmlFor="password">Mot de passe</label>
+                                            <input type="password" id="password"
+                                                className="form-control" onChange={(e) => setPassword(e.target.value)} />                                    </div>
+                                    </div>
 
-                                <div className="d-flex flex-row align-items-center mb-4">
-                                    <i className="fas fa-key fa-lg me-3 fa-fw"></i>
-                                    <div className="form-outline flex-fill mb-0">
-                                        <label className="form-label" htmlFor="password-repeat">Répétez votre mot de passe</label>
-                                        <input type="password" id="password-repeat"
-                                            className="form-control" onChange={(e) => setPasswordRepeat(e.target.value)} />                                    </div>
-                                </div>
+                                    <div className="d-flex flex-row align-items-center mb-4">
+                                        <i className="fas fa-key fa-lg me-3 fa-fw"></i>
+                                        <div className="form-outline flex-fill mb-0">
+                                            <label className="form-label" htmlFor="password-repeat">Répétez votre mot de passe</label>
+                                            <input type="password" id="password-repeat"
+                                                className="form-control" onChange={(e) => setPasswordRepeat(e.target.value)} />                                    </div>
+                                    </div>
 
-                                <div className="d-flex mx-4 mb-3 mb-lg-4">
-                                    <button type="button" className="btn btn-danger btn-lg" onClick={onClickHandler}>S'inscrire</button>
-                                </div>
-                            </form>
+                                    <div className="d-flex justify-content-center">
+                                        <button type="button" className="btn btn-danger btn-lg" onClick={onClickHandler}>S'inscrire</button>
+                                    </div>
+
+                                    <div className="d-flex flex-column align-items-center mt-3">
+                                        <p>ou si vous possédez déjà un compte</p>
+                                        <Link to="/login">
+                                            <button className="btn btn-outline-danger" type="submit">Se connecter ici</button>
+                                        </Link>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                </div>
+                <div className="container-logo">
+                    <img className="logogroupo" src={LogoGroupomania} alt="Logo Groupomania" />
+                </div>
             </main>
         </>)
 }

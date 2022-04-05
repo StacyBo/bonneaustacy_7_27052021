@@ -1,5 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.home-outline{
+    margin-top: 80px;
+}
+
 main {
-    margin-top: 70px;
+    margin-top: 100px;
+}
+
+/*.background-img{
+    background-image: url(../public/icon-left-font.svg);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 300vh;
+    background-attachment: fixed;
+}*/
+
+
+
+.container-logo{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    opacity: 40%;
+}
+
+
+.logogroupo{
+    height: 300px;
+    width: auto;
+}
+
+
+.logo-navbar{
+    margin: 10px;
+    height: 30px;
+    width: auto;
 }
 
 h3{
@@ -24,6 +64,7 @@ h3{
 .btn{
     background-color: #E97B86;
     color: white;
+    font-size: 12px;
 }
 
 .btn:hover{
@@ -50,3 +91,5 @@ h3{
     padding-top: 0px;
     padding-bottom: 0px;
 }
+
+

@@ -22,7 +22,7 @@ const Comment = (props) => {
                             onClick={() => setEditMode(!editMode)}>Modifier
                         </button>
                         <button type="button" className="btn btn-danger btn-sm mx-2"
-                            onClick={props.handleCommentDelete}>Supprimer
+                            onClick={props.handleCommentDelete}><i class="fas fa-trash-alt"></i>
                         </button>
                     </div>
                 </>
@@ -39,7 +39,7 @@ const Comment = (props) => {
                     onCommentUpdated={onCommentUpdated}
                     handleCancelUpdateComment={() => setEditMode(false)} /> :
 
-                    <div className="card my-3">
+                    <div className="card my-3 mt-2s">
                         <div className="card-body mx-3 mt-3">{props.comment.User.firstName} {props.comment.User.lastName}
                             <small className="text-muted mx-2">{(new Date(props.comment.updatedAt)).toLocaleString()}</small></div>
                         <div className="mx-3 my-3">

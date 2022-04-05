@@ -5,6 +5,7 @@ import CreatePost from '../components/CreatePost';
 import Posts from '../components/Posts';
 import { Link } from "react-router-dom";
 import { getPosts, deletePost } from '../utils/apiCalls';
+import LogoGroupomania from '../logogroupo.svg';
 
 
 function Home() {
@@ -23,7 +24,7 @@ function Home() {
         refreshPosts();
     }
     const handlePostDelete = (post) => {
-        deletePost({post : post}).then(function () {
+        deletePost({ post: post }).then(function () {
             refreshPosts();
         });
     }
@@ -40,8 +41,8 @@ function Home() {
                 <main>
                     <section>
                         < CreatePost onPostCreated={onPostCreated} />
-                        <div className="container card h-100 w-75 mb-3 pt-1">
-                            < Posts posts={posts} handlePostDelete={handlePostDelete} onPostUpdated={onPostUpdated}/>
+                        <div className="container h-100 w-75 mb-3 pt-1">
+                            < Posts posts={posts} handlePostDelete={handlePostDelete} onPostUpdated={onPostUpdated} />
                         </div>
                     </section>
                 </main>
@@ -49,7 +50,8 @@ function Home() {
     } else {
         return (
             <div className="text-center mt-4">
-                <p>Connectez-vous pour voir la liste des publications !</p>
+                <img className="logogroupo" src={LogoGroupomania} alt="Logo Groupomania"/>
+                <p className="home-outline">Connectez-vous pour voir la liste des publications !</p>
                 <Link to="/login">
                     <button className="btn btn-outline-danger" type="submit">Se connecter</button>
                 </Link>

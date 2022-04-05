@@ -1,9 +1,10 @@
 import Navbar from '../components/Navbar';
+import { Link } from "react-router-dom";
 import { postLogin } from "../utils/apiCalls";
 import { useContext, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import UserContext from "../contexts/userContext";
-import { set } from 'react-hook-form';
+import LogoGroupomania from '../logogroupo.svg';
 
 function Login() {
     const [email, setEmail] = useState("");
@@ -42,33 +43,46 @@ function Login() {
     return (
         <>
             < Navbar />
-            <main className="container">
-                <h2>Se connecter</h2>
-                <section className="vh-100">
-                    <div className="container h-100 w-50">
-                        <div className="row d-flex justify-content-center h-100">
-                            <form onSubmit={handleSubmit}>
-                                <div className="mb-3">
-                                    <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
-                                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={(e) => setEmail(e.target.value)} />
-                                </div>
-                                <div className="mb-3">
-                                    <label htmlFor="exampleInputPassword1" className="form-label">Mot de passe</label>
-                                    <input type="password" className="form-control" id="exampleInputPassword1" onChange={(e) => setPassword(e.target.value)} />
-                                </div>
-                                <button type="submit" className="btn btn-danger">Se connecter</button>
-                                {loginFail ?
-                                <span className="text-danger">Connexion impossible !</span>
-                                :
-                                null
-                                }
-                            </form>
+            <main className="container w-75">
+                <div className="card p-4">
+                    <h2 className="text-center mb-4">Se connecter</h2>
+                    <section className="vh-50">
+                        <div className="container h-50 w-75">
+                            <div className="row d-flex justify-content-center h-100">
+                                <form onSubmit={handleSubmit}>
+                                    <div className="mb-3">
+                                        <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
+                                        <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={(e) => setEmail(e.target.value)} />
+                                    </div>
+                                    <div className="mb-3">
+                                        <label htmlFor="exampleInputPassword1" className="form-label">Mot de passe</label>
+                                        <input type="password" className="form-control" id="exampleInputPassword1" onChange={(e) => setPassword(e.target.value)} />
+                                    </div>
+                                    {loginFail ?
+                                        <span className="text-danger text-center"><p>Connexion impossible !</p></span>
+                                        :
+                                        null
+                                    }
+                                    <div>
+                                        <div className="d-flex justify-content-center">
+                                            <button type="submit" className="btn btn-danger mt-2">Se connecter</button>
+                                        </div>
+                                    </div>
+                                    <div className="d-flex flex-column align-items-center mt-3">
+                                        <p>ou si vous ne possédez pas de compte</p>
+                                        <Link to="/signup">
+                                            <button className="btn btn-outline-danger" type="submit">S'inscrire ici</button>
+                                        </Link>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                </section>
-
+                    </section>
+                </div>
+                <div className="container-logo">
+                    <img className="logogroupo" src={LogoGroupomania} alt="Logo Groupomania" />
+                </div>
             </main>
-
         </>
     );
 }

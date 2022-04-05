@@ -13,7 +13,7 @@ function Profile() {
             < Navbar />
             <main className="container">
                 <section className="">
-                    <div className="container card h-100 w-50 mb-4 pt-2">
+                    <div className="container card h-100 w-75 mb-4 pt-2">
                         <h3 className="card-header mb-4">Mon profil</h3>
                         <div className="row d-flex justify-content-center h-100">
                             <div className="d-flex flex-row align-items-center mb-4">

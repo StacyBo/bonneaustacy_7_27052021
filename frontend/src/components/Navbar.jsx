@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import UserContext from "../contexts/userContext";
 import { useContext } from "react";
+import logoNavbar from '../logonavbar.png'
 
 
 function Navbar() {
@@ -40,7 +41,10 @@ function Navbar() {
     return (
         <nav className="navbar navbar-expand-md navbar-light fixed-top bg-light">
             <div className="container-fluid">
-                <Link className="navbar-brand" to="/">Groupomania</Link>
+                <Link className="navbar-brand" to="/">
+                        <img className="logo-navbar" src={logoNavbar} alt="logo Groupomania" />
+                </Link>
+
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
                     aria-label="Toggle navigation">
