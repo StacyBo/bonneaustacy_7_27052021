@@ -14,6 +14,7 @@ function Home() {
 
     const refreshPosts = () => {
         getPosts().then((postsResult) => {
+            console.log(postsResult)
             setPosts(postsResult)
         })
     }
@@ -39,18 +40,18 @@ function Home() {
             <>
                 < Navbar />
                 <main>
-                    <section>
-                        < CreatePost onPostCreated={onPostCreated} />
-                        <div className="container h-100 w-75 mb-3 pt-1">
-                            < Posts posts={posts} handlePostDelete={handlePostDelete} onPostUpdated={onPostUpdated} />
-                        </div>
+                        <section>
+                            < CreatePost onPostCreated={onPostCreated} />
+                            <div className="container background-img h-100 w-75 mb-3 pt-1">
+                                < Posts posts={posts} handlePostDelete={handlePostDelete} onPostUpdated={onPostUpdated} />
+                            </div>
                     </section>
                 </main>
             </>)
     } else {
         return (
             <div className="text-center mt-4">
-                <img className="logogroupo" src={LogoGroupomania} alt="Logo Groupomania"/>
+                <img className="logogroupo" src={LogoGroupomania} alt="Logo Groupomania" />
                 <p className="home-outline">Connectez-vous pour voir la liste des publications !</p>
                 <Link to="/login">
                     <button className="btn btn-outline-danger" type="submit">Se connecter</button>

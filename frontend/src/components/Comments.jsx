@@ -4,7 +4,6 @@ const Comments = (props) => {
     //console.log(props)
     return (
         <>
-            {/*<span className="border-top mt-2 mb-2"></span>*/}
             { props.comments.length > 0 ?
                 <div className="card-footer">
                     <p className="comment mt-0 mb-1">Commentaires :</p>

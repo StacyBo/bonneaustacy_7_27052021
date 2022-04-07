@@ -1,12 +1,24 @@
 import Navbar from '../components/Navbar';
 import UserContext from "../contexts/userContext";
 import { useContext } from "react";
-//import UpdateProfile from "../components/UpdateProfile";
 import LastPosts from "../components/LastPosts"
+import {deleteUser} from "../utils/apiCalls";
+import { Link, useNavigate } from "react-router-dom";
 
 
 function Profile() {
-    const [user] = useContext(UserContext);
+    const [user, setUser] = useContext(UserContext);
+    const navigate = useNavigate();
+
+    const onClickDelete = () => {
+        deleteUser().then((response) => {
+            if (response && response.status === 200) {
+                navigate('/login');
+                setUser(null);
+                localStorage.removeItem("token");
+            }
+        });
+    }
 
     return (
         <>
@@ -34,6 +46,10 @@ function Profile() {
                                 <div className="form-outline flex-fill mb-0">
                                     <label className="form-label" htmlFor="email">{user.email}</label>
                                 </div>
+                            </div>
+
+                            <div className="d-flex justify-content-end mt-2 mb-2">
+                                <button type="button" className="btn btn-danger btn-sm" onClick={onClickDelete}>Supprimer mon compte</button>
                             </div>
 
                             {/*<span className="border-top mt-2 mb-2"></span>

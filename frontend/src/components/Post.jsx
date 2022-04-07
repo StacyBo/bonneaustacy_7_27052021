@@ -47,7 +47,7 @@ function Post(props) {
                         onClick={() => setEditMode(!editMode)}>Modifier
                     </button>
                     <button type="button" className="btn btn-danger btn-sm"
-                        onClick={props.handlePostDelete}><i class="fas fa-trash-alt"></i>
+                        onClick={props.handlePostDelete}><i className="fas fa-trash-alt"></i>
                     </button>
                 </>
             )
@@ -70,7 +70,9 @@ function Post(props) {
                         </div>
                         <div className="text-card my-1">
                             <p className="card-text mx-3">{props.post.content}</p>
-                            <img src="..." className="img-fluid" alt="..."></img>
+                            {
+                                props.post.imageUrl ? <img src={props.post.imageUrl} className="post-img img-fluid" alt={props.post.id}/> : <></>
+                            }
                         </div>
                         <div className="d-flex justify-content-end mt-2 mb-2">
                             <button onClick={() => { setEditCreateComment(!editCreateComment) }} type="button" className="btn btn-danger btn-sm">Commenter</button>

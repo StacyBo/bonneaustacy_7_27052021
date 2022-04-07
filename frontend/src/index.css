@@ -11,15 +11,13 @@ main {
     margin-top: 100px;
 }
 
-/*.background-img{
-    background-image: url(../public/icon-left-font.svg);
-    background-size: contain;
+.background-img{
+    background-image: url(./icon.svg);
+    background-size: 85%;
     background-position: center;
     background-repeat: no-repeat;
-    height: 300vh;
     background-attachment: fixed;
-}*/
-
+}
 
 
 .container-logo{
@@ -39,11 +37,14 @@ main {
 .logo-navbar{
     margin: 10px;
     height: 30px;
-    width: auto;
 }
 
 h3{
     font-size: 23px;
+}
+
+.form-file {
+    margin-right: 15px;
 }
 
 .fa-image{
@@ -79,6 +80,12 @@ h3{
 
 .card-body{
     padding: 0px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.card-body .text-muted{
+    font-weight: initial;
 }
 
 .card-header{
@@ -91,5 +98,3 @@ h3{
     padding-top: 0px;
     padding-bottom: 0px;
 }
-
-

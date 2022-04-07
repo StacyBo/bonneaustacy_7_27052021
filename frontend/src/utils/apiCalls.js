@@ -71,14 +71,14 @@ export function getPosts() {
 
 // Creer un article
 export function createPost(params) {
-    /*let data = new FormData();
+    let data = new FormData();
     data.append('post', JSON.stringify(params.post));
-    data.append('image', params.imageUrl);*/
+    data.append('image', params.imageUrl);
 
     return fetch('http://localhost:5000/api/post', {
         method: 'POST',
-        body: JSON.stringify(params.post),
-        headers: { 'Content-Type': 'application/json', 'Authorization': localStorage.getItem('token') },
+        body: data,
+        headers: {'Authorization': localStorage.getItem('token')},
     })
         .then(function (response) {
             return response.json();
@@ -105,14 +105,14 @@ export function getLastPosts() {
 
 //Modifier un article 
 export function updatePost(params) {
-    /*let data = new FormData();
+    let data = new FormData();
     data.append('post', JSON.stringify(params.post));
-    data.append('image', params.imageUrl);*/
+    data.append('image', params.imageUrl);
 
-    return fetch('http://localhost:5000/api/post/' + params.post.id, {
-        method: 'PATCH',
-        body: JSON.stringify(params.post),
-        headers: { 'Content-Type': 'application/json; charset=utf-8','Authorization': localStorage.getItem('token') },
+    return fetch('http://localhost:5001/api/post/' + params.post.id, {
+        method: 'PUT',
+        body: data,
+        headers: {'Authorization': localStorage.getItem('token')},
     })
         .then(function (response) {
             return response.json();
@@ -192,4 +192,12 @@ export function deleteComment(params) {
         .catch(function (error) {
             console.warn(error)
         });
+}
+
+//supprimer un utilisateur
+export function deleteUser() {
+    return fetch('http://localhost:5000/api/user/delete', {
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/json; charset=utf-8', 'Authorization': localStorage.getItem('token')},
+    });
 }

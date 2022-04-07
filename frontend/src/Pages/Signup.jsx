@@ -115,11 +115,11 @@ function Signup() {
                                     </div>
 
                                     <div className="d-flex justify-content-center">
-                                        <button type="button" className="btn btn-danger btn-lg" onClick={onClickHandler}>S'inscrire</button>
+                                        <button type="button" className="btn btn-danger" onClick={onClickHandler}>S'inscrire</button>
                                     </div>
 
                                     <div className="d-flex flex-column align-items-center mt-3">
-                                        <p>ou si vous possédez déjà un compte</p>
+                                        <p className="text-center">ou si vous possédez déjà un compte</p>
                                         <Link to="/login">
                                             <button className="btn btn-outline-danger" type="submit">Se connecter ici</button>
                                         </Link>

@@ -24,10 +24,11 @@ app.use(express.json());
 sequelize.sync();
 
 // SET STORAGE
-var storage = multer.diskStorage({
+let storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'images')
     },
+    // nommer le fichier de manière unique avec le suffixe date.now 
     filename: function (req, file, cb) {
         cb(null, file.fieldname + '-' + Date.now())
     }
@@ -36,6 +37,7 @@ var storage = multer.diskStorage({
  multer({ storage: storage })
 
 // Add routes
+app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/', userRoutes);
 app.use('/api/post/', postRoutes);
 app.use('/api/comment/', commentRoutes);

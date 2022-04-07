@@ -1,8 +1,12 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const {Users: Users} = require("../models");
+const {Users: Users, Post, sequelize} = require("../models");
 const config = require('../config/index');
+const fs = require("fs");
+const {QueryTypes} = require("sequelize");
 
+
+// creation d'un utilisateur
 exports.postUser = async (req, res, next) => {
 
     const {firstName, lastName, email, password, isAdmin} = req.body;
@@ -31,11 +35,9 @@ exports.postUser = async (req, res, next) => {
 
 };
 
+// connexion d'un utilisateur
 exports.login = async (req, res, next) => {
-    //console.log(req.body)
     const {email, password} = req.body;
-    console.log(password)
-    console.log(email)
     const user = await Users.findOne({ where: { email: email } });
     if (!user) {
         return res.status(401).json({ error: 'Utilisateur non trouvé !' });
@@ -72,4 +74,17 @@ exports.auth = async (req, res, next) => {
     } catch(error) {
         return res.status(401).json(error);
     }
+};
+
+// supprimer un utilisateur
+exports.deleteUser = async (req, res, next) => {
+    Post.destroy({where: {userId: req.currentUser.id}})
+        .then(() => {
+            Users.destroy({where: {id: req.currentUser.id}})
+                .then(() => {
+                    res.status(200).json({success: true, message: "Utilisateur supprimé"})
+                })
+                .catch((error) => res.status(400).json({error}));
+        })
+        .catch((error) => res.status(400).json({error}));
 };

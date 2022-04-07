@@ -69,7 +69,7 @@ function Login() {
                                         </div>
                                     </div>
                                     <div className="d-flex flex-column align-items-center mt-3">
-                                        <p>ou si vous ne possédez pas de compte</p>
+                                        <p className="text-center">ou si vous ne possédez pas de compte</p>
                                         <Link to="/signup">
                                             <button className="btn btn-outline-danger" type="submit">S'inscrire ici</button>
                                         </Link>
