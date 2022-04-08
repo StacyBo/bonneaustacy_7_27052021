@@ -44,12 +44,16 @@ const UpdatePost = (props) => {
                 <label className="comment mb-2" htmlFor="comment">Contenu de la publication</label>
                 <textarea value={contentModified} className="form-control mb-2" rows="1" id="comment" name="text" placeholder="Écrivez ce que vous voulez ici !" onChange={(e) => setContentModified(e.target.value)}>
                 </textarea>
-                <div className="mb-3 col-4">
-                    <i className="far fa-image" />
-                    <input type="file" className="form-control" name="myImage" onChange={onImageChange} />
+                <div className="mb-3">
+                    <div className="d-flex">
+                        <div className="form-file">
+                            <input className="form-control form-control-sm btn-danger" id="formFileSm" type="file" onChange={onImageChange} />
+                        </div>
+                    </div>
+
                 </div>
                 {
-                    props.post.imageUrl ? <img src={newImageUrl} className="post-img img-fluid"/> : <></>
+                    props.post.imageUrl ? <img src={newImageUrl} className="post-img img-fluid" /> : <></>
                 }
                 <div className="d-flex justify-content-end align-items-center">
                     <button type="button" className="btn btn-danger btn-sm" onClick={props.handleCancel}>Annuler</button>

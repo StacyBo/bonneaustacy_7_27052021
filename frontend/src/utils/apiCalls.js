@@ -109,8 +109,8 @@ export function updatePost(params) {
     data.append('post', JSON.stringify(params.post));
     data.append('image', params.imageUrl);
 
-    return fetch('http://localhost:5001/api/post/' + params.post.id, {
-        method: 'PUT',
+    return fetch('http://localhost:5000/api/post/' + params.post.id, {
+        method: 'PATCH',
         body: data,
         headers: {'Authorization': localStorage.getItem('token')},
     })

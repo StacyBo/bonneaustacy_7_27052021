@@ -39,8 +39,8 @@ function Post(props) {
     };
 
     const displayActionButtons = () => {
-        if (user.isAdmin || user.id === props.post.userId){
-             //console.log(props.post)
+        if (user.isAdmin || user.id === props.post.userId) {
+            //console.log(props.post)
             return (
                 <>
                     <button type="button" className="btn btn-danger btn-sm mx-2"
@@ -68,13 +68,17 @@ function Post(props) {
                             <h5 className="card-title mb-0">{props.post.User.firstName} {props.post.User.lastName}</h5>
                             <p className="card-text mx-2"><small className="text-muted">{(new Date(props.post.updatedAt)).toLocaleString()}</small></p>
                         </div>
-                        <div className="text-card my-1">
-                            <p className="card-text mx-3">{props.post.content}</p>
-                            {
-                                props.post.imageUrl ? <img src={props.post.imageUrl} className="post-img img-fluid" alt={props.post.id}/> : <></>
-                            }
+                        <div className="flex-wrap text-card my-1">
+                            <div>
+                            <p className="card-text mx-3 mt-2 mb-2">{props.post.content}</p>
+                            </div>
+                            <div className="d-flex justify-content-center mb-3">
+                                {
+                                    props.post.imageUrl ? <img src={props.post.imageUrl} className="post-img img-fluid" alt={props.post.id} /> : <></>
+                                }
+                            </div>
                         </div>
-                        <div className="d-flex justify-content-end mt-2 mb-2">
+                        <div className="justify-content-end mt-2 mb-2">
                             <button onClick={() => { setEditCreateComment(!editCreateComment) }} type="button" className="btn btn-danger btn-sm">Commenter</button>
                             {displayActionButtons()}
                         </div>
@@ -82,7 +86,7 @@ function Post(props) {
                             comments={comments}
                             post={props.post}
                             handleCommentDelete={handleCommentDelete}
-                            onCommentUpdated={onCommentUpdated}/>
+                            onCommentUpdated={onCommentUpdated} />
 
                         {
                             editCreateComment ?

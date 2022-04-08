@@ -29,15 +29,18 @@ function CreatePost(props) {
 
     return (
         <div>
-            <div className="container h-100 w-75 mb-2">
-                <label className="comment mb-2" htmlFor="comment">Que voulez-vous partager aujourd'hui ?</label>
-                <textarea value={content} className="form-control mb-1" rows="1" id="comment" name="text" placeholder="Écrivez ce que vous voulez ici !" onChange={(e) => setContent(e.target.value)}></textarea>
-                <div className="d-flex justify-content-end align-items-center">
-                    <div>
-                    <input type="file" className="form-control" name="myImage" onChange={onImageChange} />
-                    <i className="far fa-image"></i>
+            <div className="container h-100 w-75 mb-3">
+                <label className="comment mb-" htmlFor="comment">Que voulez-vous partager aujourd'hui ?</label>
+                <textarea value={content} className="form-control mb-3" rows="1" id="comment" name="text" placeholder="Écrivez ce que vous voulez ici !" onChange={(e) => setContent(e.target.value)}></textarea>
+                <div className="d-flex justify-content-between align-items-baseline">
+                    <div className="d-flex">
+                        <div className="form-file">
+                            <input className="form-control form-control-sm btn btn-danger" id="formFileSm" type="file" onChange={onImageChange} />
+                        </div>
                     </div>
-                    <button type="button" className="btn btn-danger btn-sm" onClick={onClickHandler}>Poster</button>
+                    <div>
+                        <button type="button" className="d-flex btn btn-danger btn-sm" onClick={onClickHandler}>Poster</button>
+                    </div>
                 </div>
             </div>
         </div>

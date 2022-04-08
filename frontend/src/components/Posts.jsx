@@ -1,6 +1,9 @@
 import Post from "./Post";
+import { useContext } from "react";
+import UserContext from "../contexts/userContext";
 
 const Posts = (props) => {
+    //const [user] = useContext(UserContext);
 
     const addPosts = () => {
         return props.posts.map((post) => {
