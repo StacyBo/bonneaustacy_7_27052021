@@ -74,6 +74,7 @@ h3{
 }
 
 .text-card{
+    font-weight: normal;
     background-color: #FFF4F4;
     border-radius: 5px;
 }
@@ -97,4 +98,8 @@ h3{
     padding-left: 15px;
     padding-top: 0px;
     padding-bottom: 0px;
+}
+
+.post-img{
+    max-width: 60%;
 }

@@ -30,7 +30,7 @@ function CreatePost(props) {
     return (
         <div>
             <div className="container h-100 w-75 mb-3">
-                <label className="comment mb-" htmlFor="comment">Que voulez-vous partager aujourd'hui ?</label>
+                <label className="comment mb-3" htmlFor="comment">Que voulez-vous partager aujourd'hui ?</label>
                 <textarea value={content} className="form-control mb-3" rows="1" id="comment" name="text" placeholder="Écrivez ce que vous voulez ici !" onChange={(e) => setContent(e.target.value)}></textarea>
                 <div className="d-flex justify-content-between align-items-baseline">
                     <div className="d-flex">
