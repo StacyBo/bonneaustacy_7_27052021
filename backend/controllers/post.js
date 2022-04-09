@@ -4,12 +4,7 @@ const { post } = require('../app');
 const { Post: Post, Comment: Comment, Users: Users, sequelize } = require("../models");
 const { patch } = require('../routes/user');
 
-// ajouter un article // ajouter de la sécurité (injection SQL) faire requête préparée
-//exports.addPost = async (req, res, next) => {
-    //console.log(req.body.content)
-    //const posts = await sequelize.query(`INSERT INTO posts (content, userId, updatedAt) VALUES ("${req.body.content}", "${req.currentUser.id}", "${(new Date()).toISOString().slice(0, 19).replace('T', ' ')}")`, { type: QueryTypes.INSERT })
-    //res.status(200).json(posts)
-//}
+// ajouter un article
 exports.addPost = async (req, res, next) => {
     //conversion de string a objet
     console.log(req.body)
@@ -34,13 +29,7 @@ exports.addPost = async (req, res, next) => {
         });
 };
 
-// Modifier l'article // ajouter de la sécurité (injection SQL)
-//exports.updatePost = async (req, res, next) => {
-//    //console.log(req.body.content)
-//    const posts = await sequelize.query(`UPDATE posts SET content = "${req.body.content}" WHERE userId = "${req.currentUser.id}" AND id= "${req.params.id}" `, { type: QueryTypes.UPDATE })
-//    res.status(200).json(posts)
-//}
-
+// Modifier l'article 
 exports.updatePost = async (req, res, next) => {
     const newPost = JSON.parse(req.body.post);
     // Moderator can update every posts
@@ -79,15 +68,10 @@ exports.updatePost = async (req, res, next) => {
         }
     }
 };
-// Supprimer un article -- ajouter de la sécurité (injection SQL)
-//exports.deletePost = async (req, res, next) => {
-//    const posts = await 
-  //  sequelize.query("DELETE FROM posts WHERE id=" + req.params.id, { type: QueryTypes.DELETE })
-    //res.status(200).json(posts)
-//}
 
+// Supprimer un article
 exports.deletePost = async (req, res, next) => {
-    // Moderator can delete every posts
+    // L'admin peu supprimer tous les articles
     const whereClause = {id: req.params.id}
     if (req.currentUser.isAdmin === false) {
         whereClause.userId = req.currentUser.id;
@@ -113,12 +97,13 @@ exports.deletePost = async (req, res, next) => {
     });
 };
 
-// recupérer les articles 
+// recuperer les articles 
 exports.getPosts = async (req, res, next) => {
     const posts = await Post.findAll({
         include: [{
             model: Users
         }],
+        // on donne le sens d'apparition des articles 
         order: [
             ['updatedAt', 'DESC'],
         ],

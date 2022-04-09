@@ -13,7 +13,6 @@ exports.addComment = async (req, res, next) => {
         createdAt: new Date(),
         updatedAt: new Date()
     }
-    //console.log(comment)
     Comment.create(comment)
         .then(data => {
             res.send(data);

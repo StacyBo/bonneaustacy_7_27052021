@@ -19,8 +19,8 @@ function Signup() {
     const validateForm = () => {
         let regexEmail = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9]+$/;
         let regexPassword = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})$/;
-        console.log(email);
-        console.log(password);
+        //console.log(email);
+        //console.log(password);
         if (regexEmail.test(email) === false) {
             inputEmailValidation.current.textContent = 'Veuillez saisir une adresse Email valide';
             inputEmailValidation.current.style.display = 'block';

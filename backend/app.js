@@ -5,11 +5,14 @@ const commentRoutes = require('./routes/comment')
 const path = require('path');
 const multer  = require('multer')
 
-const app = express();
+
 const {sequelize, Users} = require('./models');
 
+// creation et configuration d'express
+const app = express();
 
-// Cors middleware
+
+// CORS middleware
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
@@ -17,13 +20,13 @@ app.use((req, res, next) => {
     next();
 });
 
-// Parse the body of the request
+// Analyser le corps de la requete
 app.use(express.json());
 
-// Create tables if they doesn't already exist
+// Creer les tableaux s'ils n'existent pas déjà
 sequelize.sync();
 
-// SET STORAGE
+// gestion du stockage
 let storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'images')
@@ -36,7 +39,7 @@ let storage = multer.diskStorage({
 
  multer({ storage: storage })
 
-// Add routes
+// Ajout des routes
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/', userRoutes);
 app.use('/api/post/', postRoutes);

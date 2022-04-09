@@ -7,7 +7,7 @@ const MIME_TYPES = {
     'image/png': 'png'
 };
 
-// Create "images" directory if it doesn't already exist
+// Creer un dossier image s'il n'existe pas
 const dir = './images';
 if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);

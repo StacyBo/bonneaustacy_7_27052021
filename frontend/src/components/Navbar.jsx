@@ -25,7 +25,7 @@ function Navbar() {
                     <div className="user-connected me-5">
                         {user.firstName} {user.lastName} est connecté
                     </div>
-                    <button className="btn btn-outline-danger mx-1" type="submit" onClick={updateProfile}>Modifier mon profil</button>
+                    <button className="btn btn-outline-danger mx-1" type="submit" onClick={updateProfile}>Mon profil</button>
                     <button className="btn btn-outline-danger mx-1" type="submit" onClick={logout}>Se déconnecter</button>
                 </>
             );
