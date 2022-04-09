@@ -3,8 +3,6 @@ const fs = require("fs");
 const { QueryTypes } = require('sequelize');
 const { patch } = require('../routes/user');
 
-
-// ajouter de la sécurité (injection SQL) faire requête préparée
 //ajouter un commentaire
 exports.addComment = async (req, res, next) => {
     //console.log(req.body.content)
@@ -46,7 +44,7 @@ exports.getComments = async (req, res, next) => {
 
 // modifier le commentaire
 exports.updateComment = async (req, res, next) => {
-    // Moderator can update every posts
+    // L'admin peut modifier tous les commentaires
     const whereClause = { id: req.params.id }
     if (req.currentUser.isAdmin === false) {
         whereClause.userId = req.currentUser.id;
@@ -67,6 +65,6 @@ exports.updateComment = async (req, res, next) => {
 // supprimer un commentaire 
 exports.deleteComment = async (req, res, next) => {
     const comments = await
-        sequelize.query("DELETE FROM comments WHERE id=" + req.params.id, { type: QueryTypes.DELETE })
+    sequelize.query("DELETE FROM comments WHERE id=?", { type: QueryTypes.DELETE, replacements: [req.params.id] })
     res.status(200).json(comments)
 }
