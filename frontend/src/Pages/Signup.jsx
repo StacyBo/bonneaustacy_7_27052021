@@ -15,17 +15,27 @@ function Signup() {
     const [passwordRepeat, setPasswordRepeat] = useState("");
     const navigate = useNavigate();
     const inputEmailValidation = useRef();
+    const inputPasswordValidation = useRef();
     const validateForm = () => {
         let regexEmail = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9]+$/;
+        let regexPassword = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})$/;
         console.log(email);
+        console.log(password);
         if (regexEmail.test(email) === false) {
-            //console.log("rgetg")
             inputEmailValidation.current.textContent = 'Veuillez saisir une adresse Email valide';
             inputEmailValidation.current.style.display = 'block';
             return false;
         } else {
             inputEmailValidation.current.textContent = '';
             inputEmailValidation.current.style.display = "none";
+        }
+        if (regexPassword.test(password) === false) {
+            inputPasswordValidation.current.textContent = 'Le mot de passe doit contenir 8 à 15 caractères dont au moins une lettre minuscule, au moins une lettre majuscule, au moins un chiffre, au moins un de ces caractères spéciaux: $ @ % * + - _ ! ';
+            inputPasswordValidation.current.style.display = 'block';
+            return false;
+        } else {
+            inputPasswordValidation.current.textContent = '';
+            inputPasswordValidation.current.style.display = "none";
         }
         if (!lastName) {
             alert('Nom invalide');
@@ -39,7 +49,7 @@ function Signup() {
             alert('Email invalide');
             return false;
         }
-        if (password === "" || password.length < 5) {
+        if (password === "" || password.length < 8) {
             alert('Mot de passe invalide');
             return false;
         }
@@ -94,7 +104,7 @@ function Signup() {
                                             <label className="form-label" htmlFor="email">Email</label>
                                             <input type="text" id="email"
                                                 className="form-control" onChange={(e) => setEmail(e.target.value)} />
-                                            <div class="invalid-feedback" ref={inputEmailValidation}></div>
+                                            <div className="invalid-feedback" ref={inputEmailValidation}></div>
                                         </div>
                                     </div>
 
@@ -103,7 +113,9 @@ function Signup() {
                                         <div className="form-outline flex-fill mb-0">
                                             <label className="form-label" htmlFor="password">Mot de passe</label>
                                             <input type="password" id="password"
-                                                className="form-control" onChange={(e) => setPassword(e.target.value)} />                                    </div>
+                                                className="form-control" onChange={(e) => setPassword(e.target.value)} />
+                                            <div className="invalid-feedback" ref={inputPasswordValidation}></div>
+                                        </div>
                                     </div>
 
                                     <div className="d-flex flex-row align-items-center mb-4">
