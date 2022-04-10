@@ -22,9 +22,7 @@ function Navbar() {
         if (user) {
             return (
                 <>
-                    <div className="user-connected me-5">
-                        {user.firstName} {user.lastName} est connecté
-                    </div>
+                    <div className="user-connected me-5 font-weight-bold">{user.firstName} {user.lastName} est en ligne</div>
                     <button className="btn btn-outline-danger mx-1" type="submit" onClick={updateProfile}>Mon profil</button>
                     <button className="btn btn-outline-danger mx-1" type="submit" onClick={logout}>Se déconnecter</button>
                 </>

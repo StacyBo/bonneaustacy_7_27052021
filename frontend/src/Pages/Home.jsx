@@ -14,7 +14,7 @@ function Home() {
 
     const refreshPosts = () => {
         getPosts().then((postsResult) => {
-            console.log(postsResult)
+           // console.log(postsResult)
             setPosts(postsResult)
         })
     }
