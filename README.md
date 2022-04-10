@@ -5,8 +5,8 @@
 4. Install nodemon if it is not already installed `npm install -g nodemon`
 5. Install sequelize CLI : `npm install -g sequelize-cli`
 6. Create the database locally : `sequelize db:create`
-7. `npm install`
 8. `cd backend`
+7. `npm install`
 9. Add the Admin user : `sequelize-cli db:migrate`
 10. Start the backend : `nodemon server`
 11. `cd frontend`
